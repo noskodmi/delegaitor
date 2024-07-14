@@ -18,9 +18,9 @@ contract DelegaitorToken is ERC20, ERC20Burnable, Ownable {
     event TokensLocked(address indexed user, uint256 amount);
     event TokensUnlocked(address indexed user, uint256 amount);
 
-    constructor(address initialOwner)
+    constructor()
         ERC20("Delegaitor Token", "DELEGA")
-        Ownable(initialOwner)
+        Ownable(msg.sender)
     {
     }
 
