@@ -59,9 +59,9 @@ const MainPane: FC = () => {
       <Flex className={styles.content}>
         <Status />
 
-        {isConnected && !isSurveySubmitted && <Survey onSurveySubmit={() => setIsSurveySubmitted(true)} />}
+        {isConnected && <Survey onSurveySubmit={() => setIsSurveySubmitted(true)} />}
 
-        {isConnected && isSurveySubmitted && (
+        {isConnected && (
           <>
             <Address />
             <Chain />

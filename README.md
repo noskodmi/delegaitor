@@ -1,4 +1,7 @@
 # delegaitor
+Architecute overview: https://miro.com/app/board/uXjVKyibH5E=/?share_link_id=442351469450
+fe deployed: http://104.248.43.107:3000/
+be deployed: http://104.248.43.107:4000/
 ETHGlobal Brussels 2024 Hackathon submission
 
 DELEGAITOR is a tool that uses AI to improve DAO governance by speeding up decision-making and increasing proposal success rates.
