@@ -1,4 +1,4 @@
-// components/MainPane.tsx
+
 import { type FC } from "react";
 
 import { Box, Divider, Flex, Heading, useColorMode } from "@chakra-ui/react";
@@ -13,11 +13,39 @@ import {
   Balance,
   BlockNumber,
   Claim,
+  Survey,
 } from "./components";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+// Add to the MainPane component
 const MainPane: FC = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { colorMode } = useColorMode();
+  const [isSurveySubmitted, setIsSurveySubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isConnected) {
+      const checkSurveyStatus = async () => {
+        try {
+          const response = await axios.get(`/api/survey-status?address=${address}`);
+          setIsSurveySubmitted(response.data.isSurveySubmitted);
+        } catch (error) {
+          console.error("Error checking survey status:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      checkSurveyStatus();
+    }
+  }, [isConnected, address]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box
@@ -31,7 +59,9 @@ const MainPane: FC = () => {
       <Flex className={styles.content}>
         <Status />
 
-        {isConnected && (
+        {isConnected && !isSurveySubmitted && <Survey onSurveySubmit={() => setIsSurveySubmitted(true)} />}
+
+        {isConnected && isSurveySubmitted && (
           <>
             <Address />
             <Chain />
@@ -55,5 +85,6 @@ const MainPane: FC = () => {
     </Box>
   );
 };
+
 
 export default MainPane;
