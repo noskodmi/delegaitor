@@ -49,7 +49,7 @@ const Proposals: React.FC = () => {
         <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6}>
           {votedProposals.map((proposal) => (
             <GridItem key={proposal.id} p={4} border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"} className={styles.shadow}>
-              <Text fontSize="md" fontWeight="bold">{proposal.id}</Text>
+              <Text fontSize="md" fontWeight="bold"><strong>Proposal:</strong>{proposal.id}</Text>
               <Text fontSize="sm" mb={2}>{proposal.description}</Text>
               <Text fontSize="sm" mb={2}><strong>DAO:</strong> {proposal.dao}</Text>
               <Text fontSize="sm" mb={2}><strong>AI Comment:</strong> {proposal.aiComment}</Text>
