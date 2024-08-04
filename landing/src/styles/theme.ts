@@ -52,7 +52,7 @@ const commonTheme: Theme = {
           padding: '12px 30px',
           ':hover': {
             borderWidth: '3px',
-          }
+          },
         },
       },
     },
@@ -61,7 +61,7 @@ const commonTheme: Theme = {
         root: {
           borderRadius: '16px',
           padding: '16px',
-          color: 'unset !important'
+          color: 'unset !important',
         },
       },
     },
@@ -82,13 +82,23 @@ export const lightTheme = createTheme({
     primary: {
       main: '#5D5FEF',
     },
+    secondary: {
+      light: '#CCCCCC', // Border color in default state
+      main: '#888888',  // Border color on hover
+    },
+    error: {
+      main: '#D32F2F', // Error state border color
+    },
     background: {
       default: '#f5f5f5',
-      paper: '#20153B',
+      paper: '#ffffff',
     },
     text: {
       primary: '#000000',
       secondary: '#5D5FEF',
+    },
+    action: {
+      disabled: '#E0E0E0', // Disabled state border color
     },
   },
   ...commonTheme,
@@ -100,6 +110,13 @@ export const darkTheme: Theme = createTheme({
     primary: {
       main: '#5D5FEF',
     },
+    secondary: {
+      light: '#555555', // Border color in default state
+      main: '#BBBBBB',  // Border color on hover
+    },
+    error: {
+      main: '#EF5350', // Error state border color
+    },
     background: {
       default: '#0F091F',
       paper: '#20153B',
@@ -107,6 +124,9 @@ export const darkTheme: Theme = createTheme({
     text: {
       primary: '#ffffff',
       secondary: '#5D5FEF',
+    },
+    action: {
+      disabled: '#757575', // Disabled state border color
     },
   },
   ...commonTheme,

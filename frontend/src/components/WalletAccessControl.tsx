@@ -23,9 +23,7 @@ const WalletAccessControl: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   return (
-    <Box sx={{ padding: 2 }}>
-      {children}
-    </Box>
+    children
   );
 };
 

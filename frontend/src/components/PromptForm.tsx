@@ -32,7 +32,7 @@ const PromptForm: React.FC = () => {
   return (
     <Paper elevation={3} sx={{ p: 3 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom pb={3}>
           Generate Delegator Prompt
         </Typography>
         <Stack spacing={2}>
@@ -43,8 +43,20 @@ const PromptForm: React.FC = () => {
             <OutlinedInput
               id="contract-address"
               {...register('contractAddress')}
-              sx={{ margin: 0 }}
-            />
+              sx={{
+                margin: 0,
+
+                // "& .MuiOutlinedInput-notchedOutline": {
+                //   border: ' 2px solid red !important',
+                // },
+                // "&:hover .MuiOutlinedInput-notchedOutline": {
+                //   border: ' 2px solid green !important',
+                // },
+                // "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                //   border: ' 2px solid #fff !important',
+                // },
+
+              }} />
           </FormControl>
 
           <FormControl fullWidth variant="outlined">
