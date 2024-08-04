@@ -1,13 +1,13 @@
 {
-  "plugins": [
-    "import",
-    "@typescript-eslint",
-    "prettier"
-  ],
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
+    "prettier"
+  ],
+  "plugins": [
+    "import",
+    "@typescript-eslint",
     "prettier"
   ],
   "rules": {

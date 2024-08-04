@@ -1,18 +1,18 @@
-import type { ReactNode } from "react";
-
-import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
-
+import { Inter } from "next/font/google";
+// import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
+import "@/styles/globals.css";
 import { Providers } from "./providers";
+import { Layout } from "@/components";
 
-const open_sans = Open_Sans({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
+// const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Delegaitor",
   applicationName: "Delegaitor",
-  description: "Symbiosis of Human and AI for enchanced and active DAO voting. Chose strategy and delegate your voting power to AI agents",
+  description: "Symbiosis of Human and AI for enhanced and active DAO voting. Choose strategy and delegate your voting power to AI agents",
   authors: {
     name: "noskodmi",
     url: "https://github.com/noskodmi/delegaitor",
@@ -21,11 +21,18 @@ export const metadata: Metadata = {
   manifest: "site.webmanifest",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
   return (
     <html lang="en">
-      <body className={open_sans.className}>
-        <Providers>{children}</Providers>
+      <body className={inter.className}>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );
