@@ -1,6 +1,6 @@
 'use client';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import React, { useState, useMemo, useEffect, ReactNode, FC } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 import { lightTheme, darkTheme } from '../styles/theme';
 
@@ -11,14 +11,14 @@ interface ThemeContextType {
 
 const ThemeContext = React.createContext<ThemeContextType>({
   toggleTheme: () => { },
-  theme: 'light',
+  theme: 'dark',
 });
 
 interface ThemeProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   const toggleTheme = () => {

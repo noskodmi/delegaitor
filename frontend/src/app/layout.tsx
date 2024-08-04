@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
 import "@/styles/globals.css";
 import { Providers } from "./providers";
-import { useMediaQuery, useTheme } from "@mui/material";
-import { MobileLayout, WebLayout } from "@/components";
+import { Layout } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 // const open_sans = Open_Sans({ subsets: ["latin"] });
@@ -26,10 +26,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
-  const Layout = isTablet ? MobileLayout : WebLayout;
 
   return (
     <html lang="en">

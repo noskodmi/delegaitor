@@ -12,7 +12,7 @@ export default function WebLayout({ children }: WebLayoutProps) {
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Header />
-      <Container component="main" maxWidth="lg" sx={{ flex: 1, px: 4, pb: 6 }}>
+      <Container component="main" maxWidth="lg" sx={{ flex: 1, px: 4, py: 6 }}>
         {children}
       </Container>
       <Footer />

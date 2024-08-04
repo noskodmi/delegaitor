@@ -1,60 +1,77 @@
-import { Box, Button, Flex, Grid, GridItem, Text, useColorMode } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React from "react";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 
-import styles from "@/styles/mainPane.module.css";
-
-import { unvotedProposals, votedProposals, defaultPrompt } from './mockProposals';
+import { unvotedProposals, votedProposals, defaultPrompt } from "./mockProposals";
 
 const Proposals: React.FC = () => {
-  const { colorMode } = useColorMode();
   const router = useRouter();
   const handleEdit = () => router.push('/prompt');
 
   return (
     <>
-      <Box mb={6} p={4} border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"} className={styles.shadow}>
-        <Flex pb={4} justifyContent="space-between" alignItems="center">
-          <Text fontSize="lg" fontWeight="bold">DAO AI Delegator Prompt</Text>
-          <Button size="sm" colorScheme="blue" onClick={handleEdit}>
+      <Paper elevation={3}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 2 }}>
+          <Typography variant="h6" fontWeight="bold">
+            DAO AI Delegator Prompt
+          </Typography>
+          <Button variant="contained" color="primary" size="small" onClick={handleEdit}>
             Edit
           </Button>
-        </Flex>
-        <Box p={2} border='1px' borderColor='gray.200' borderRadius='4px'>
-          <Text fontSize="md">{defaultPrompt}</Text>
         </Box>
-      </Box>
+        <Box sx={{ padding: 2, border: '1px solid', borderColor: 'grey.300', borderRadius: 1 }}>
+          <Typography variant="body1">{defaultPrompt}</Typography>
+        </Box>
+      </Paper>
 
-      <Box mb={6}>
-        <Text pb={4} fontSize="lg" fontWeight="bold">Unvoted Proposals</Text>
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6}>
+      <Box sx={{ marginBottom: 3 }}>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          Unvoted Proposals
+        </Typography>
+        <Grid container spacing={2}>
           {unvotedProposals.map((proposal) => (
-            <GridItem key={proposal.id} p={4} border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"} className={styles.shadow}>
-              <Text fontSize="md" fontWeight="bold">{proposal.id}</Text>
-              <Text fontSize="sm" mb={2}>{proposal.description}</Text>
-              <Text fontSize="sm" mb={2}><strong>DAO:</strong> {proposal.dao}</Text>
-              <Text fontSize="sm" mb={2}><strong>Advised by Delegator:</strong> {proposal.advisedByDelegator ? 'Yes' : 'No'}</Text>
-              <Text fontSize="sm" mb={2}><strong>AI Comment:</strong> {proposal.aiComment}</Text>
-              <Text fontSize="sm" mb={4}><strong>Auto AI Vote Execution in:</strong> {proposal.autoVoteExecutionTime}</Text>
-              <Flex justifyContent="space-between">
-                <Button colorScheme="green" width="48%">Yes</Button>
-                <Button colorScheme="red" width="48%">No</Button>
-              </Flex>
-            </GridItem>
+            <Grid item xs={12} sm={6} md={4} key={proposal.id}>
+              <Paper elevation={3} sx={{ 
+                padding: 2, 
+                border: theme => theme.palette.mode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)",
+                borderRadius: theme => theme.shape.borderRadius 
+              }}>
+                <Typography variant="body1" fontWeight="bold">{proposal.id}</Typography>
+                <Typography variant="body2" paragraph>{proposal.description}</Typography>
+                <Typography variant="body2"><strong>DAO:</strong> {proposal.dao}</Typography>
+                <Typography variant="body2"><strong>Advised by Delegator:</strong> {proposal.advisedByDelegator ? 'Yes' : 'No'}</Typography>
+                <Typography variant="body2"><strong>AI Comment:</strong> {proposal.aiComment}</Typography>
+                <Typography variant="body2" paragraph><strong>Auto AI Vote Execution in:</strong> {proposal.autoVoteExecutionTime}</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Button variant="contained" color="success" size="small" sx={{ width: '48%' }}>Yes</Button>
+                  <Button variant="contained" color="error" size="small" sx={{ width: '48%' }}>No</Button>
+                </Box>
+              </Paper>
+            </Grid>
           ))}
         </Grid>
       </Box>
 
       <Box>
-        <Text pb={4} fontSize="lg" fontWeight="bold">Voted Proposals</Text>
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6}>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          Voted Proposals
+        </Typography>
+        <Grid container spacing={2}>
           {votedProposals.map((proposal) => (
-            <GridItem key={proposal.id} p={4} border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"} className={styles.shadow}>
-              <Text fontSize="md" fontWeight="bold"><strong>Proposal:</strong>{proposal.id}</Text>
-              <Text fontSize="sm" mb={2}>{proposal.description}</Text>
-              <Text fontSize="sm" mb={2}><strong>DAO:</strong> {proposal.dao}</Text>
-              <Text fontSize="sm" mb={2}><strong>AI Comment:</strong> {proposal.aiComment}</Text>
-              <Text fontSize="sm" mb={4}><strong>Voted:</strong> {proposal.voted}</Text>
-            </GridItem>
+            <Grid item xs={12} sm={6} md={4} key={proposal.id}>
+              <Paper elevation={3} sx={{ 
+                padding: 2, 
+                border: theme => theme.palette.mode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)",
+                borderRadius: theme => theme.shape.borderRadius 
+              }}>
+                <Typography variant="body1" fontWeight="bold"><strong>Proposal:</strong> {proposal.id}</Typography>
+                <Typography variant="body2" paragraph>{proposal.description}</Typography>
+                <Typography variant="body2"><strong>DAO:</strong> {proposal.dao}</Typography>
+                <Typography variant="body2"><strong>AI Comment:</strong> {proposal.aiComment}</Typography>
+                <Typography variant="body2" paragraph><strong>Voted:</strong> {proposal.voted}</Typography>
+              </Paper>
+            </Grid>
           ))}
         </Grid>
       </Box>

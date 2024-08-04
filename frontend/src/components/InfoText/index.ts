@@ -1,1 +1,1 @@
-export { default as InfoText } from "./InfoText";
+// export { default as InfoText } from "./InfoText";

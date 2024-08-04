@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button, TextField, Typography, Paper, Stack } from "@mui/material";
+import { Button, Typography, Paper, Stack, FormControl, InputLabel, OutlinedInput } from "@mui/material";
 import axios from "axios";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
@@ -17,7 +17,7 @@ interface FormData {
   membershipCriteria: string;
 }
 
-const PromtForm: React.FC = () => {
+const PromptForm: React.FC = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -30,22 +30,140 @@ const PromtForm: React.FC = () => {
   };
 
   return (
-    <Paper elevation={3}>
+    <Paper elevation={3} sx={{ p: 3 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h6" gutterBottom>
           Generate Delegator Prompt
         </Typography>
-        <Stack flexDirection="column" justifyContent='start' alignItems="stretch" gap={2}>
-          <TextField label="DAO Contract Address" {...register('contractAddress')} />
-          <TextField type="textarea" label="What is the primary goal of the DAO?" multiline rows={3} {...register('primaryGoal')} sx={{ margin: '0' }} />
-          <TextField label="What are the key performance indicators (KPIs) for the DAO?" multiline rows={3} {...register('kpis')} />
-          <TextField label="What governance model does the DAO follow?" multiline rows={3} {...register('governanceModel')} />
-          <TextField label="What are the main challenges the DAO is facing?" multiline rows={3} {...register('challenges')} />
-          <TextField label="What is the DAO’s investment strategy?" multiline rows={3} {...register('investmentStrategy')} />
-          <TextField label="What is the long-term vision for the DAO?" multiline rows={3} {...register('longTermVision')} />
-          <TextField label="How does the DAO handle conflicts of interest?" multiline rows={3} {...register('conflictHandling')} />
-          <TextField label="What are the voting mechanisms within the DAO?" multiline rows={3} {...register('votingMechanisms')} />
-          <TextField label="What are the criteria for membership in the DAO?" multiline rows={3} {...register('membershipCriteria')} />
+        <Stack spacing={2}>
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="contract-address" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              DAO Contract Address
+            </InputLabel>
+            <OutlinedInput
+              id="contract-address"
+              {...register('contractAddress')}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="primary-goal" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What is the primary goal of the DAO?
+            </InputLabel>
+            <OutlinedInput
+              id="primary-goal"
+              {...register('primaryGoal')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="kpis" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What are the key performance indicators (KPIs) for the DAO?
+            </InputLabel>
+            <OutlinedInput
+              id="kpis"
+              {...register('kpis')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="governance-model" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What governance model does the DAO follow?
+            </InputLabel>
+            <OutlinedInput
+              id="governance-model"
+              {...register('governanceModel')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="challenges" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What are the main challenges the DAO is facing?
+            </InputLabel>
+            <OutlinedInput
+              id="challenges"
+              {...register('challenges')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="investment-strategy" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What is the DAO’s investment strategy?
+            </InputLabel>
+            <OutlinedInput
+              id="investment-strategy"
+              {...register('investmentStrategy')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="long-term-vision" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What is the long-term vision for the DAO?
+            </InputLabel>
+            <OutlinedInput
+              id="long-term-vision"
+              {...register('longTermVision')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="conflict-handling" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              How does the DAO handle conflicts of interest?
+            </InputLabel>
+            <OutlinedInput
+              id="conflict-handling"
+              {...register('conflictHandling')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="voting-mechanisms" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What are the voting mechanisms within the DAO?
+            </InputLabel>
+            <OutlinedInput
+              id="voting-mechanisms"
+              {...register('votingMechanisms')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
+          <FormControl fullWidth variant="outlined">
+            <InputLabel htmlFor="membership-criteria" sx={{ background: ({ palette }) => palette.background.paper, px: 1 }}>
+              What are the criteria for membership in the DAO?
+            </InputLabel>
+            <OutlinedInput
+              id="membership-criteria"
+              {...register('membershipCriteria')}
+              multiline
+              rows={3}
+              sx={{ margin: 0 }}
+            />
+          </FormControl>
+
           <Button type="submit" variant="contained" color="primary" fullWidth>
             Generate Delegator Prompt
           </Button>
@@ -55,4 +173,4 @@ const PromtForm: React.FC = () => {
   );
 };
 
-export default PromtForm;
+export default PromptForm;

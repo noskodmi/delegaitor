@@ -1,22 +1,22 @@
+"use client";
 import React from "react";
-
-import { Flex, Heading, VStack, Button } from "@chakra-ui/react";
+import { Box, Button, Typography, Stack } from "@mui/material";
 
 const ProposalsHeader: React.FC = () => {
   return (
-    <Flex justifyContent='space-between' pb={4}>
-      <Heading as="h1" fontSize={"1.5rem"} lineHeight='38px'>
-        DAO proposals
-      </Heading>
-      <VStack flexDirection='row' gap={2}>
-        <Button size='sm' colorScheme="blue">
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 2 }}>
+      <Typography variant="h5" sx={{ lineHeight: '38px' }}>
+        DAO Proposals
+      </Typography>
+      <Stack direction="row" spacing={1}>
+        <Button variant="contained" color="primary" size="small">
           Chat GPT 3.5
         </Button>
-        <Button size='sm' colorScheme="green">
+        <Button variant="contained" color="success" size="small">
           + Add New DAO
         </Button>
-      </VStack>
-    </Flex>
+      </Stack>
+    </Box>
   );
 };
 

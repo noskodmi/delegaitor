@@ -1,4 +1,4 @@
-import { Theme } from '@emotion/react';
+import { type Theme } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
 
@@ -98,7 +98,10 @@ export const darkTheme: Theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#5D5FEF',
+      main: '#5D5FEF'
+    },
+    secondary: {
+      main: '#20153B'
     },
     background: {
       default: '#0F091F',

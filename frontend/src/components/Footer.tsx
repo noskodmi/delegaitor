@@ -3,7 +3,7 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <Box component="footer" py={2} mt="auto" bgcolor="primary.main" color="white">
       <Container maxWidth="lg">
@@ -14,3 +14,4 @@ export default function Footer() {
     </Box>
   );
 }
+export default Footer
