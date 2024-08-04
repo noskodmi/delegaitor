@@ -1,13 +1,12 @@
 "use client";
 import { type ReactNode, useState, useEffect } from "react";
 
-import { CacheProvider } from "@chakra-ui/next-js";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
 
 import { wagmiConfig } from "@/wagmi";
+import { ThemeProvider } from "@/components";
 
 export function Providers({ children }: Readonly<{ children: ReactNode }>) {
   const [mounted, setMounted] = useState(false);
@@ -16,7 +15,6 @@ export function Providers({ children }: Readonly<{ children: ReactNode }>) {
 
   const queryClient = new QueryClient();
 
-  const theme = extendTheme({ initialColorMode: "dark", useSystemColorMode: false });
 
   const appInfo = {
     appName: "Delegaitor",
@@ -25,13 +23,11 @@ export function Providers({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <CacheProvider>
-          <ChakraProvider resetCSS theme={theme}>
-            <RainbowKitProvider coolMode appInfo={appInfo}>
-              {mounted && children}
-            </RainbowKitProvider>
-          </ChakraProvider>
-        </CacheProvider>
+        <ThemeProvider>
+          <RainbowKitProvider coolMode appInfo={appInfo}>
+            {mounted && children}
+          </RainbowKitProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
